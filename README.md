@@ -1,6 +1,10 @@
 # sipgo-tools
 Tools for SIP
 
+Download (Linux only for now):
+-  [gophone](https://github.com/emiago/sipgo-tools/releases/download/0.1/gophone)
+-  [psip](https://github.com/emiago/sipgo-tools/releases/download/0.1/psip)
+
 ## gophone
 CLI phone built for testing
 Features:
