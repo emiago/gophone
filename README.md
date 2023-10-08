@@ -35,7 +35,10 @@ Enviroment variables:
 Examples:
 gophone -l 127.0.0.200:5060 answer
 gophone dial sip:1234@127.0.0.200:5060
+gophone dial -sip-header="X-AccountId:test123" sip:1234@server:5060
 gophone register sip:sipgo:mypass@127.0.0.1:5060
+digest authentication:
+gophone -ua alice dial -username=alice1234 -password=1234 "sip:echo@server:5060"
 with media:
 gophone dial -media=audio sip:1234@localhost:5060
 gophone dial -media=mic sip:1234@localhost:5060
