@@ -1,5 +1,6 @@
 # sipgo-tools
-Tools for SIP
+Tools for SIP powered by sipgo lib. 
+For now not opensource but more to serve as demo for library.
 
 Download (Linux only for now):
 -  [gophone](https://github.com/emiago/sipgo-tools/releases/latest/download/gophone)
