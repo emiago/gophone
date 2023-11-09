@@ -7,6 +7,13 @@ Download (Linux only for now):
 -  [psip](https://github.com/emiago/sipgo-tools/releases/latest/download/psip)
 
 ## gophone
+
+C Dependecies for audio to run
+```sh
+apt install libportaudio2 # debian/ubuntu
+dnf install portaudio # fedora
+```
+
 CLI phone built for testing
 Features:
 - [x] Dial Answer Register
