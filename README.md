@@ -7,6 +7,10 @@ This tool is not opensource for now but it is free and more to serve demo for li
 
 
 [Download (Linux only for now) gophone](https://github.com/emiago/gophone/releases/latest/download/gophone)
+or run this
+```bash
+wget https://github.com/emiago/gophone/releases/latest/download/gophone && mv gophone ~/.local/bin
+```
 
 CLI phone built for testing
 Features:
@@ -68,6 +72,19 @@ gophone dial -media=log -transcribe sip:1234@localhost:5060
 ## Speech to text:
 
 It is using [whisper models](https://openai.com/research/whisper) for transcribing audio offline and end of call. 
+
+You need compile and install whisper lib.
+```bash
+git clone https://github.com/ggerganov/whisper.cpp
+cd whisper.cpp && make libwhisper.so 
+cp libwhisper.so /usr/local/lib && cp whisper.h gglm.h /usr/local/include
+```
+
+Download [gophone_whipser](https://github.com/emiago/gophone/releases/latest/download/gophone_whisper)
+or run this
+```bash
+wget https://github.com/emiago/gophone/releases/latest/download/gophone_whisper && mv gophone_whisper ~/.local/bin/gophone
+```
 
 With rtp stats and transcription it helps to check audio output without even having speaker on. 
 
