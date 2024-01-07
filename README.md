@@ -17,7 +17,7 @@ Features:
 - [x] Dial Answer Register
 - [x] Media: rtp logging, rtp summary, audio
 - [x] Different responses NoAnswer,Busy
-- [x] Offline Speech To text Transcription for output
+- [x] Offline Speech To text Transcription for output. Check [Speech To Text](#speech-to-text) below for install
 - [ ] Offline Speech To text Transcription for input 
 - [ ] Transfers
 
