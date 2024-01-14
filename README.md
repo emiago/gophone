@@ -6,12 +6,6 @@ It provides also **json** type output for more easier filtering if you are runni
 This tool is not opensource for now but it is free and more to serve demo for library.
 
 
-[Download (Linux only for now) gophone](https://github.com/emiago/gophone/releases/latest/download/gophone)
-or run this
-```bash
-wget https://github.com/emiago/gophone/releases/latest/download/gophone && mv gophone ~/.local/bin
-```
-
 CLI phone built for testing
 Features:
 - [x] Dial Answer Register
@@ -21,10 +15,13 @@ Features:
 - [ ] Offline Speech To text Transcription for input 
 - [ ] Transfers
 
-C Dependecies for audio to run
-```sh
-apt install libportaudio2 # debian/ubuntu
-dnf install portaudio # fedora
+
+
+# Quick start
+
+Automatically install gophone and deps on your linux maching (amd64)
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/emiago/gophone/main/install.sh)"
 ```
 
 
@@ -73,19 +70,6 @@ gophone dial -media=log -transcribe sip:1234@localhost:5060
 
 It is using [whisper models](https://openai.com/research/whisper) for transcribing audio offline and end of call. 
 
-You need compile and install whisper lib.
-```bash
-git clone https://github.com/ggerganov/whisper.cpp
-cd whisper.cpp && make libwhisper.so 
-cp libwhisper.so /usr/local/lib && cp whisper.h gglm.h /usr/local/include
-```
-
-Download [gophone_whipser](https://github.com/emiago/gophone/releases/latest/download/gophone_whisper)
-or run this
-```bash
-wget https://github.com/emiago/gophone/releases/latest/download/gophone_whisper && mv gophone_whisper ~/.local/bin/gophone
-```
-
 With rtp stats and transcription it helps to check audio output without even having speaker on. 
 
 Example call on asterisk.
@@ -96,5 +80,28 @@ $>gophone dial -media=log -transcribe sip:thanks@127.0.0.1:5060
 19:05:52.186 INF Transcriber > text="Goodbye. Thank you for trying out the asterisk open source PBX."
 ```
 
+# Install manually
+
+C Dependecies for audio to run
+```sh
+apt install libportaudio2 # debian/ubuntu
+dnf install portaudio # fedora
+```
+
+**Speech to text compile:**
+
+```bash
+git clone https://github.com/ggerganov/whisper.cpp
+cd whisper.cpp && make libwhisper.so 
+cp libwhisper.so /usr/local/lib && cp whisper.h gglm.h /usr/local/include
+```
 
 
+
+**Gophone install:**
+
+[Download (Linux only for now) gophone](https://github.com/emiago/gophone/releases/latest/download/gophone)
+or run this
+```bash
+wget https://github.com/emiago/gophone/releases/latest/download/gophone && mv gophone ~/.local/bin
+```
