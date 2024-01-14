@@ -16,14 +16,12 @@ Features:
 - [ ] Transfers
 
 
-
 # Quick start
 
 Automatically install gophone and deps on your linux maching (amd64)
 ```
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/emiago/gophone/main/install.sh)"
 ```
-
 
 ## Usage 
 
