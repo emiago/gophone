@@ -13,7 +13,10 @@ Features:
 - [x] Different responses NoAnswer,Busy
 - [x] Offline Speech To text Transcription for output. Check [Speech To Text](#speech-to-text) for more
 - [ ] Offline Speech To text Transcription for input 
-- [ ] Transfers
+- [ ] Transfers, BlindTransfer, AttendedTransfer automation with flags
+- [ ] Recording audio for easier visiting later
+- [ ] Logging SIP traces to file
+- [ ] Loadtest examples
 
 
 # Quick start
