@@ -3,8 +3,10 @@
 is CLI SIP phone powered by [sipgo](https://github.com/emiago/sipgo) for more friendly call testing.
 It provides also **json** type output for more easier filtering if you are running in cron based script.
 
-This tool is not opensource for now but it is free and more to serve demo for library.
+This tool is not opensource but it is free and more to serve demo for library. It is mainly developed 
+for automated testing and taking [sipgo](https://github.com/emiago/sipgo) more stable.
 
+Any feature/bug is open for discussing. See some list below where this tool is heading.
 
 CLI phone built for testing
 Features:
