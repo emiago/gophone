@@ -10,12 +10,17 @@ Any feature/bug is open for discussing. See some list below where this tool is h
 
 CLI phone built for testing
 Features:
+- [x] Use flags to automate call scenario of one endpoint
 - [x] Dial Answer Register
-- [x] Media: rtp logging, rtp summary, audio
+- [x] Media: ulaw, alaw
+- [x] Media: rtp logging, speaker, microphone
+- [x] RTP stats: packets, packet loss, talking/silence
 - [x] Different responses NoAnswer,Busy
 - [x] Offline Speech To text Transcription for output. Check [Speech To Text](#speech-to-text) for more
-- [ ] Offline Speech To text Transcription for input 
-- [ ] Transfers, BlindTransfer, AttendedTransfer automation with flags
+- [ ] Offline Speech To text Transcription for input
+- [ ] Support of subcommand same like person will do during call
+- [ ] DTMF as subcommand
+- [ ] Transfers, BlindTransfer, AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
 - [ ] Logging SIP traces to file
 - [ ] Loadtest examples
