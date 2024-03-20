@@ -7,7 +7,7 @@ gophone dial -media=audio sip:alice@sip.dev.server:5060
 ```
 
 Most of code is on libraries mentioned with exception for some some audio processing and media setup. 
-It is mainly developed for automated testing purpose.
+It is mainly developed for automated testing purpose and minimal logging for understanding call state.
 
 Any feature/bug or supporthing this is open for discussing. 
 
@@ -21,8 +21,8 @@ For audio it expected you have some preinstalled libraries
 
 ### Major features:
 - 3 actions: **Dial, Answer or Register**
-- Media IO control: speaker,mic,file or just logging
-- RTP statistics during call
+- **Media IO control**: speaker, mic, file
+- **RTP statistics** during call
 - **Offline Speech To text** Transcription of phone call  using [whisper models](https://openai.com/research/whisper) 
 - Provides also **json** type output for easier filtering.
 
