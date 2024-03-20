@@ -50,8 +50,8 @@ gophone is single binary so you only need to download and run it.
 You can [Download from here](https://github.com/emiago/gophone/releases/latest/) or 
 here quick links 
 
-- Linux https://github.com/emiago/gophone/releases/latest/gophone-linux-amd64
-- Windows https://github.com/emiago/gophone/releases/latest/gophone-windows
+- Linux https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
+- Windows https://github.com/emiago/gophone/releases/latest/download/gophone-windows
 
 
 ## Usage 
