@@ -2,6 +2,9 @@
 
 is single binary CLI SIP softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
 
+```bash
+gophone dial -media=audio sip:alice@sip.dev.server:5060
+```
 
 Most of code is on libraries mentioned with exception for some some audio processing and media setup. 
 It is mainly developed for automated testing purpose.
@@ -56,7 +59,7 @@ here quick links
 
 ## Usage 
 
-```
+```bash
 $>gophone -h
 Usage of gophone command:
 
