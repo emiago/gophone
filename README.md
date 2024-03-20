@@ -1,37 +1,58 @@
 # gophone
 
-is CLI SIP phone powered by [sipgo](https://github.com/emiago/sipgo) for more friendly call testing.
-It provides also **json** type output for more easier filtering if you are running in cron based script.
+is single binary CLI SIP softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
 
-This tool is not opensource but it is free and more to serve demo for library. It is mainly developed 
-for automated testing and taking [sipgo](https://github.com/emiago/sipgo) more stable.
 
-Any feature/bug is open for discussing. See some list below where this tool is heading.
+Most of code is on libraries mentioned with exception for some some audio processing and media setup. 
+It is mainly developed for automated testing purpose.
 
-CLI phone built for testing
-Features:
+Any feature/bug or supporthing this is open for discussing. 
+
+### Cross Platform builds:
+- [x] Linux amd64
+- [x] Windows
+- [ ] macOS arm64
+
+
+For audio it expected you have some preinstalled libraries
+
+### Major features:
+- 3 actions: **Dial, Answer or Register**
+- Media IO control: speaker,mic,file or just logging
+- RTP statistics during call
+- **Offline Speech To text** Transcription of phone call  using [whisper models](https://openai.com/research/whisper) 
+- Provides also **json** type output for easier filtering.
+
+
+**Roadmap:**
 - [x] Use flags to automate call scenario of one endpoint
 - [x] Dial Answer Register
-- [x] Media: ulaw, alaw
-- [x] Media: rtp logging, speaker, microphone
+- [x] Media encoders: ulaw, alaw
+- [x] Media IO: rtp logging, speaker, microphone
 - [x] RTP stats: packets, packet loss, talking/silence
 - [x] Different responses NoAnswer,Busy
-- [x] Offline Speech To text Transcription for output. Check [Speech To Text](#speech-to-text) for more
-- [ ] Offline Speech To text Transcription for input
-- [ ] Support of subcommand same like person will do during call
-- [ ] DTMF as subcommand
+- [x] Offline Speech To text Transcription for output.
+- [x] Offline Speech To text Transcription for input
+- [x] Sending DTMF rfc4733 with delay control
 - [ ] Transfers, BlindTransfer, AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
 - [ ] Logging SIP traces to file
 - [ ] Loadtest examples
 
 
+
 # Quick start
 
-Automatically install gophone and deps on your linux maching (amd64)
-```
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/emiago/gophone/main/install.sh)"
-```
+## Install
+
+gophone is single binary so you only need to download and run it.
+
+You can [Download from here](https://github.com/emiago/gophone/releases/latest/) or 
+here quick links 
+
+- Linux https://github.com/emiago/gophone/releases/latest/gophone-linux-amd64
+- Windows https://github.com/emiago/gophone/releases/latest/gophone-windows
+
 
 ## Usage 
 
@@ -53,6 +74,7 @@ Enviroment variables:
   LOG_NOCOLOR                           Disable color
   SIP_DEBUG                             LOG SIP traffic. Used with LOG_LEVEL=debug
   RTP_DEBUG                             LOG RTP traffic. Used with LOG_LEVEL=debug
+  RTCP_DEBUG                            LOG RTCP traffic. Used with LOG_LEVEL=debug
   GOPHONE_MEDIA=<same as -media>        Sets default media in case of calls
 
 Examples:
@@ -72,44 +94,16 @@ gophone answer -media=speaker
 
 with transcribe:
 gophone dial -media=log -transcribe sip:1234@localhost:5060
-```
 
-## Speech to text:
-
-It is using [whisper models](https://openai.com/research/whisper) for transcribing audio offline and end of call. 
-
-With rtp stats and transcription it helps to check audio output without even having speaker on. 
-
-Example call on asterisk.
-```bash
-$>gophone dial -media=log -transcribe sip:thanks@127.0.0.1:5060
-...
-19:05:50.948 INF Transcriber > wait, transcribing speech... len=88236
-19:05:52.186 INF Transcriber > text="Goodbye. Thank you for trying out the asterisk open source PBX."
-```
-
-# Install manually
-
-C Dependecies for audio to run
-```sh
-apt install libportaudio2 # debian/ubuntu
-dnf install portaudio # fedora
-```
-
-**Speech to text compile:**
-
-```bash
-git clone https://github.com/ggerganov/whisper.cpp
-cd whisper.cpp && make libwhisper.so 
-cp libwhisper.so /usr/local/lib && cp whisper.h gglm.h /usr/local/include
+with DTMF:
+gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:1234@localhost:5060
 ```
 
 
 
-**Gophone install:**
 
-[Download (Linux only for now) gophone](https://github.com/emiago/gophone/releases/latest/download/gophone)
-or run this
-```bash
-wget https://github.com/emiago/gophone/releases/latest/download/gophone && mv gophone ~/.local/bin
-```
+## Output example
+
+Running a full call and transcription output at and.
+
+![output with transcription](images/screenshot.png)
