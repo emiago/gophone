@@ -1,7 +1,7 @@
 
 <img src="images/g2.png" width="150" height="150" alt="SIPGO">
 
-**GOPHONE** is single binary CLI SIP softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
+**GOPHONE** is single binary CLI SIP Softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
 
 <p></p>
 
@@ -12,7 +12,7 @@ gophone dial -media=audio sip:alice@sip.dev.server:5060
 Most of code is on libraries mentioned with exception for some some audio processing and media setup. 
 It is mainly developed for automated testing purpose and minimal logging for understanding call state.
 
-Any feature/bug or supporthing this is open for discussing. 
+Any feature/bug or supporting this is open for discussing. 
 
 ### Cross Platform builds:
 - [x] Linux amd64
@@ -110,6 +110,6 @@ gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:123
 
 ## Output example
 
-Running a full call and transcription output at and.
+Running a full call and transcription output at end.
 
 ![output with transcription](images/screenshot.png)
