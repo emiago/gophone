@@ -1,6 +1,9 @@
-# gophone
 
-is single binary CLI SIP softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
+<img src="images/g2.png" width="150" height="150" alt="SIPGO">
+
+**GOPHONE** is single binary CLI SIP softphone written in GO and powered by [sipgo](https://github.com/emiago/sipgo) and [sipgox](https://github.com/emiago/sipgox)
+
+<p></p>
 
 ```bash
 gophone dial -media=audio sip:alice@sip.dev.server:5060
