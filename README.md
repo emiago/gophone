@@ -17,7 +17,7 @@ Any feature/bug or supporting this is open for discussing.
 ### Cross Platform builds:
 - [x] Linux amd64
 - [x] Windows
-- [ ] macOS arm64
+- [x] macOS amd64
 
 
 For audio it expected you have some preinstalled libraries
