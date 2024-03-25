@@ -58,6 +58,7 @@ here quick links
 
 - Linux https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
 - Windows https://github.com/emiago/gophone/releases/latest/download/gophone-windows
+- Macos https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
 
 
 ## Usage 
