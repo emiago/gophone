@@ -114,3 +114,9 @@ gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:123
 Running a full call and transcription output at end.
 
 ![output with transcription](images/screenshot.png)
+
+
+
+## Using jq and json
+
+![output with jq filtering](images/jqjson.png)
