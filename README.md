@@ -18,6 +18,7 @@ Any feature/bug or supporting this is open for discussing.
 - [x] Linux amd64
 - [x] Windows
 - [x] macOS amd64
+- [x] macOS arm64 (NOT TESTED)
 
 
 For audio it expected you have some preinstalled libraries
@@ -27,10 +28,10 @@ For audio it expected you have some preinstalled libraries
 - **Media IO control**: speaker, mic, file
 - **RTP statistics** during call
 - **Offline Speech To text** Transcription of phone call  using [whisper models](https://openai.com/research/whisper) 
-- Provides also **json** type output for easier filtering.
+- Provides also **json** type output for easier filtering and post verification
 
 
-**Roadmap:**
+**Roadmap/Features:**
 - [x] Use flags to automate call scenario of one endpoint
 - [x] Dial Answer Register
 - [x] Media encoders: ulaw, alaw
@@ -42,6 +43,7 @@ For audio it expected you have some preinstalled libraries
 - [x] Sending DTMF rfc4733 with delay control
 - [ ] Transfers, BlindTransfer, AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
+- [ ] Better events logging in Structured logging for easier JSON verification.
 - [ ] Logging SIP traces to file
 - [ ] Loadtest examples
 
@@ -58,7 +60,8 @@ here quick links
 
 - Linux https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
 - Windows https://github.com/emiago/gophone/releases/latest/download/gophone-windows
-- Macos https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
+- Macos amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
+- Macos arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-arm64.tar.gz
 
 
 ## Usage 
@@ -117,6 +120,8 @@ Running a full call and transcription output at end.
 
 
 
-## Using jq and json
+## Using jq and json format
+
+Using json allows some post verification for your call setup.
 
 ![output with jq filtering](images/jqjson.png)
