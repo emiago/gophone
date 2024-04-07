@@ -20,8 +20,7 @@ Any feature/bug or supporting this is open for discussing.
 - [x] macOS amd64
 - [x] macOS arm64 (NOT TESTED)
 
-
-For audio it expected you have some preinstalled libraries
+For audio it expected you have some preinstalled libraries.
 
 ### Major features:
 - 3 actions: **Dial, Answer or Register**
@@ -87,6 +86,11 @@ Enviroment variables:
   RTCP_DEBUG                            LOG RTCP traffic. Used with LOG_LEVEL=debug
   GOPHONE_MEDIA=<same as -media>        Sets default media in case of calls
 
+
+gophone is CLI SIP softphone powered by sipgo library.
+To find more information about tool and licences visit
+https://github.com/emiago/gophone
+
 Examples:
 gophone answer -l 127.0.0.200:5060 
 gophone answer -l 127.0.0.200:5060 -code 486 -reason Busy
@@ -94,19 +98,26 @@ gophone dial sip:1234@127.0.0.200:5060
 gophone dial -sipheader="X-AccountId:test123" sip:1234@server:5060
 gophone register -username=sipgo -password=1234 127.0.0.1:5060 
 
-with digest authentication:
+With digest authentication:
 gophone dial -ua alice -username=alice1234 -password=1234 "sip:echo@server:5060"
 
-with media:
+With media:
 gophone dial -media=audio sip:1234@localhost:5060
 gophone dial -media=mic sip:1234@localhost:5060
 gophone answer -media=speaker
 
-with transcribe:
+With transcribe:
 gophone dial -media=log -transcribe sip:1234@localhost:5060
 
-with DTMF:
+With DTMF:
 gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:1234@localhost:5060
+
+
+RTP stats meaning:
+packets: number of packets
+payload_total_size: sum size of payload recevied
+since_last_pkt: time duration between last packet recv/send
+zero_pkts: packets with payload that are samples zeroed
 ```
 
 
