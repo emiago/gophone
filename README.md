@@ -137,3 +137,13 @@ Running a full call and transcription output at end.
 Using json allows some post verification for your call setup.
 
 ![output with jq filtering](images/jqjson.png)
+
+
+### Media Testing with transcriber
+
+```bash
+CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@carrier.xy \
+    | jq -r 'select(.caller=="Transcriber" and .text != null) | .text')
+
+test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
+```
