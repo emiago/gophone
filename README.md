@@ -19,7 +19,7 @@ Any feature/bug or supporting this is open for discussion, but for now developme
 - [x] Linux amd64
 - [x] Windows
 - [x] macOS amd64
-- [x] macOS arm64 (NOT TESTED)
+- [x] macOS arm64 (no call transcription supported)
 
 For audio it expected you have some preinstalled libraries.
 
@@ -41,7 +41,9 @@ For audio it expected you have some preinstalled libraries.
 - [x] Offline Speech To text Transcription for output.
 - [x] Offline Speech To text Transcription for input
 - [x] Sending DTMF rfc4733 with delay control
-- [ ] Transfers, BlindTransfer, AttendedTransfer automation as subcommand of dial/answer
+- [x] Simple INTERACTIVE mode Commands via STDIN
+- [x] BlindTransfer automation as subcommand of dial/answer
+- [ ] AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
 - [ ] Better events logging in Structured logging for easier JSON verification.
 - [ ] Logging SIP traces to file
@@ -71,9 +73,9 @@ $>gophone -h
 Usage of gophone command:
 
 Commands:
-  register      Send register request
-  dial          Dial destination
+  dial          Dial destination.
   answer        Answer call
+  register      Send register request only without answer.
 
   -t string
     	Transport udp|tcp|tls|ws|wss (default "udp")
@@ -92,11 +94,18 @@ gophone is CLI SIP softphone powered by sipgo library.
 To find more information about tool and licences visit
 https://github.com/emiago/gophone
 
-Examples:
+Answer:
 gophone answer -l 127.0.0.200:5060 
 gophone answer -l 127.0.0.200:5060 -code 486 -reason Busy
+
+Answer with register:
+gophone  answer -ua alice -username alice1234 -password 1234 -register "127.0.0.1:5060"
+
+Dial:
 gophone dial sip:1234@127.0.0.200:5060
 gophone dial -sipheader="X-AccountId:test123" sip:1234@server:5060
+
+Register:
 gophone register -username=sipgo -password=1234 127.0.0.1:5060 
 
 With digest authentication:
@@ -113,6 +122,9 @@ gophone dial -media=log -transcribe sip:1234@localhost:5060
 With DTMF:
 gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:1234@localhost:5060
 
+With INTERACTIVE mode:
+echo "wait=3s; dtmf=123; hangup;" | gophone dial -i -media=speaker sip:demo@127.0.0.1:5060
+
 
 RTP stats meaning:
 packets: number of packets
@@ -120,8 +132,6 @@ payload_total_size: sum size of payload recevied
 since_last_pkt: time duration between last packet recv/send
 zero_pkts: packets with payload that are samples zeroed
 ```
-
-
 
 
 ## Output example
@@ -132,11 +142,18 @@ Running a full call and transcription output at end.
 
 
 
-## Using jq and json format
+## Using jq and json format to verify output
 
 Using json allows some post verification for your call setup.
 
 ![output with jq filtering](images/jqjson.png)
+
+
+**Useful filtering**
+```bash 
+gophone ... | jq 'select(.caller=="Dial" and .event=="SIP")'
+gophone ... | jq 'select(.caller=="Dial" and .event=="DialogState")'
+```
 
 
 ### Media Testing with transcriber
