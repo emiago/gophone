@@ -124,13 +124,6 @@ gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:123
 
 With INTERACTIVE mode:
 echo "wait=3s; dtmf=123; hangup;" | gophone dial -i -media=speaker sip:demo@127.0.0.1:5060
-
-
-RTP stats meaning:
-packets: number of packets
-payload_total_size: sum size of payload recevied
-since_last_pkt: time duration between last packet recv/send
-zero_pkts: packets with payload that are samples zeroed
 ```
 
 
