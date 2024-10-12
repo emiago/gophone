@@ -18,8 +18,8 @@ Any feature/bug or supporting this is open for discussion, but for now developme
 ### Cross Platform builds:
 - [x] Linux amd64
 - [x] Windows
-- [x] macOS amd64
-- [x] macOS arm64 (no call transcription supported)
+- [x] macOS amd64 (***NOT SIGNED**) Check [MacOS malware detect](#macos-malware-detect)
+- [x] macOS arm64 (no call transcription supported) (***NOT SIGNED**) Check [MacOS malware detec](#macos-malware-detect)
 
 For audio it expected you have some preinstalled libraries.
 
@@ -157,3 +157,13 @@ CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@car
 
 test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
 ```
+
+
+## MacOS malware detect
+
+gophone CLI tool is **not signed** by Apple Developer Program and may be shown as **Malware** by your **Gatekeeper**. This is something Apple started to require on newer OS (From Catalina v10.15). FYI: in order to sign binary Apple requires annual payment. This project is not yet sponsored or had requirement todo so.
+
+For allowing unsigned CLI tool to run here are some articles to check. 
+- https://support.apple.com/en-us/102445#:~:text=If%20you%20want%20to%20open,Mac%20or%20compromise%20your%20privacy.
+- https://github.molgen.mpg.de/pages/bs/macOSnotes/mac/mac_procs_unsigned.html
+- https://openecoacoustics.org/resources/help-centre/software/unsigned/
