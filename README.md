@@ -1,19 +1,18 @@
 
-<img src="images/g2.png" width="150" height="150" alt="SIPGO">
+<img src="images/g2.png" width="150" height="150" alt="GOPHONE">
 
-**GOPHONE** is single binary CLI SIP Softphone written in GO and powered by [sipgox](https://github.com/emiago/sipgox) and [sipgo](https://github.com/emiago/sipgo)
+**GOPHONE** is single binary CLI SIP Softphone written in GO and powered by [diago](https://github.com/emiago/diago)
 
 <p></p>
 
 ```bash
 gophone dial -media=audio sip:alice@sip.dev.server:5060
 ```
-NOT Open Source,
-but most of code is on libraries mentioned with exception for some some audio processing and media setup. This also 
+NOT Open Source, but most of code is on libraries mentioned with exception for some some audio streaming and media setup. This also 
 shows power of this libs. 
-It is mainly developed for simple automated testing purpose.
+It is mainly developed for simple automated testing purpose, but with Simple API and better integration with other shell tools.
 
-Any feature/bug or supporting this is open for discussion, but for now development time/focus is more on libraries.
+Any feature/bug or supporting this is open for discussion, but more you can find m
 
 ### Cross Platform builds:
 - [x] Linux amd64
