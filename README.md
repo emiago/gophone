@@ -12,10 +12,11 @@ NOT Open Source, but most of code is on libraries mentioned with exception for s
 shows power of this libs. 
 It is mainly developed for simple automated testing purpose, but with Simple API and better integration with other shell tools.
 
-Any feature/bug or supporting this is open for discussion, but more you can find m
+Any feature/bug or supporting/sponzoring is welcomed.
 
 ### Cross Platform builds:
 - [x] Linux amd64
+- [x] Linux arm64 (no call transcription supported)
 - [x] Windows
 - [x] macOS amd64 (***NOT SIGNED**) Check [MacOS malware detect](#macos-malware-detect)
 - [x] macOS arm64 (no call transcription supported) (***NOT SIGNED**) Check [MacOS malware detec](#macos-malware-detect)
@@ -59,7 +60,8 @@ gophone is single binary so you only need to download and run it.
 You can [Download from here](https://github.com/emiago/gophone/releases/latest/) or 
 here quick links 
 
-- Linux https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
+- Linux amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
+- Linux arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-arm64
 - Windows https://github.com/emiago/gophone/releases/latest/download/gophone-windows
 - Macos amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
 - Macos arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-arm64.tar.gz
