@@ -29,6 +29,7 @@ For audio it expected you have some preinstalled libraries.
 - **RTP statistics** during call
 - **Offline Speech To text** Transcription of phone call  using [whisper models](https://openai.com/research/whisper) 
 - Provides also **json** type output for easier filtering and post verification
+- **OPUS** codec support
 
 
 **Roadmap/Features:**
@@ -43,6 +44,8 @@ For audio it expected you have some preinstalled libraries.
 - [x] Sending DTMF rfc4733 with delay control
 - [x] Simple INTERACTIVE mode Commands via STDIN
 - [x] BlindTransfer automation as subcommand of dial/answer
+- [x] Opus codec support
+- [x] Controling audio formats like pcmu,pcma and opus
 - [ ] AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
 - [ ] Better events logging in Structured logging for easier JSON verification.
@@ -66,6 +69,24 @@ here quick links
 - Macos amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
 - Macos arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-arm64.tar.gz
 
+### With OPUS codec
+
+- Linux amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-opus-amd64
+
+Install codec:
+```bash 
+# Debian, Ubuntu
+sudo apt install libopus0
+
+# Fedora
+sudo dnf install opus
+```
+
+```bash
+gophone dial -audio_formats=opus,pcma,pcmu sip:123@sip.server.com
+```
+
+**If you need opus binary for your platform please open issue** For now it just Linux amd64 exposed
 
 ## Usage 
 
