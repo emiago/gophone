@@ -92,6 +92,10 @@ gophone dial -audio_formats=opus,pcma,pcmu sip:123@sip.server.com
 
 ```bash
 $>gophone -h
+gophone is CLI SIP softphone powered by sipgo library.
+To find more information about tool and licences visit
+https://github.com/emiago/gophone
+
 Usage of gophone command:
 
 Commands:
@@ -110,11 +114,6 @@ Enviroment variables:
   RTP_DEBUG                             LOG RTP traffic. Used with LOG_LEVEL=debug
   RTCP_DEBUG                            LOG RTCP traffic. Used with LOG_LEVEL=debug
   GOPHONE_MEDIA=<same as -media>        Sets default media in case of calls
-
-
-gophone is CLI SIP softphone powered by sipgo library.
-To find more information about tool and licences visit
-https://github.com/emiago/gophone
 
 Answer:
 gophone answer -l 127.0.0.200:5060 
