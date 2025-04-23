@@ -182,9 +182,9 @@ CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@car
 test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
 ```
 
-## Loadtesting with gophone
+## Load Testing 
 
-**To ensure the continued development and maintenance of this project, this Feature is exposed for now only for supporters(sponzors) of this and other project development. If you are interested having this feature you can contact me on** [mail](mailto:emirfreelance91@gmail.com)
+**To ensure the continued development and maintenance of gophone, this feature is exposed only for supporters(sponsors) of this or other projects in repo. If you are interested having this feature you can contact me on** [mail](mailto:emirfreelance91@gmail.com) **and you will receive build**
 
 
 N Step based Load Test for your SIP + RTP media server
@@ -196,10 +196,8 @@ Features:
 
 Checkout Demo: https://youtu.be/VXNt7RP4TLc
 
-Load test feature is N Step call based load testing where on each next step your rate calls is increased. 
-This allows you to see behavior of SIP server under different rate of pressure and call concurency
-
-Supported protocols: udp, tcp, ws (Encrypted can be added later)
+Load test feature is N Step call based load testing where on each next step your rate of calls is increased. 
+This allows you to see behavior of SIP server under different rate of pressure and call concurrency
 
 ```bash
 Gophone call loadtester.
