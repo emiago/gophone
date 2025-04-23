@@ -46,11 +46,12 @@ For audio it expected you have some preinstalled libraries.
 - [x] BlindTransfer automation as subcommand of dial/answer
 - [x] Opus codec support
 - [x] Controling audio formats like pcmu,pcma and opus
+- [x] N Step Loadtester integrated with SIP and media metrics
 - [ ] AttendedTransfer automation as subcommand of dial/answer
 - [ ] Recording audio for easier visiting later
 - [ ] Better events logging in Structured logging for easier JSON verification.
 - [ ] Logging SIP traces to file
-- [ ] Loadtest examples
+- [ ] SIP over WebRTC
 
 
 
@@ -65,9 +66,10 @@ here quick links
 
 - Linux amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
 - Linux arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-arm64
-- Windows https://github.com/emiago/gophone/releases/latest/download/gophone-windows
 - Macos amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
 - Macos arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-arm64.tar.gz
+
+Windows builds will be added on request!
 
 ### With OPUS codec
 
@@ -102,6 +104,7 @@ Commands:
   dial          Dial destination.
   answer        Answer call
   register      Send register request only without answer.
+  loadtest      N Step call load testing
 
   -t string
     	Transport udp|tcp|tls|ws|wss (default "udp")
@@ -179,6 +182,90 @@ CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@car
 test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
 ```
 
+## Loadtesting with gophone
+
+**To ensure the continued development and maintenance of this project, this Feature is exposed for now only for supporters(sponzors) of this and other project development. If you are interested having this feature you can contact me on** [mail](mailto:emirfreelance91@gmail.com)
+
+
+N Step based Load Test for your SIP + RTP media server
+
+Features:
+- Providing SIP + RTP metrics during test execution!
+- Allows you to define **alarm thresholds** (ALARM_VALUES) on which call information is dumped, which after you can use to analyze in your PCAPs
+- Rate is automatically distributed based on number of steps and rate range
+
+Checkout Demo: https://youtu.be/VXNt7RP4TLc
+
+Load test feature is N Step call based load testing where on each next step your rate calls is increased. 
+This allows you to see behavior of SIP server under different rate of pressure and call concurency
+
+Supported protocols: udp, tcp, ws (Encrypted can be added later)
+
+```bash
+Gophone call loadtester.
+Media Codec: ulaw, alaw
+Transport:UDP,TCP
+
+Usage: loadtest SIPURI
+
+SIPURI format:
+  exten
+  sip:user@ip
+
+Flags:
+  -alarm_rtp_r value
+    	Set alarm threshold as key:value which will dump call when reached. Can be multiple defined  or comma separated. ALARM_RTP_VALUES
+  -alarm_rtp_w value
+    	Set alarm threshold as key:value which will dump call when reached. Can be multiple defined or comma separated. ALARM_RTP_VALUES
+  -alarm_sip value
+    	Set alarm threshold as key:value which will dump call when reached. Can be multiple defined or comma separated. ALARM_SIP_VALUES
+  -audio_file string
+    	Play wav audio file. NOTE: sample rate, bit depth must match codec used
+  -call_duration duration
+    	Duration of call (e.g., 30s, 1m) (default 30s)
+  -duration duration
+    	Total duration which will be divided by steps (e.g., 30s, 1m) (default 5m0s)
+  -l string
+    	My listen ip
+  -rate_interval duration
+    	Rate interval in seconds (default 1s)
+  -rate_max int
+    	Maximum requests per second (default 10)
+  -rate_start int
+    	Initial requests per second (default 1)
+  -rate_steps int
+    	Number of steps to ramp up/down (default 5)
+  -t string
+    	Transport udp|tcp (default "udp")
+  -ua string
+    	User agent of phone (default "sipgo")
+  -ua_auto_inc
+    	Adds suffix number on user agent and auto increments for every new call. Allows to distinct calls in your tests
+  -ua_host string
+    	User agent host in From header
+
+ALARM_RTP_VALUES:
+  - pkt_loss:int Default:0 RTP Packet Total Loss
+  - pkt_loss_fraction_perc:int[0-100] Default:0 RTP Fraction Packet Loss based on RTCP interval
+  - jitter_ms:int Default:0 RTP Jitter In Milliseconds
+
+ALARM_SIP_VALUES:
+  - early_hangup:bool Default:false Early hangup by remote side
+  - max_ring_time:duration Default:0 Max ring time expected 
+
+EXAMPLES:
+Minimal:
+gophone loadtest sip:test@sip.server.xy
+
+Custom rate:
+gophone loadtest -rate_start=1 -rate_max=5 -rate_interval=5s sip:test@sip.server.xy
+
+With RTP Alarms:
+gophone loadtest -alarm_rtp_r="pkt_loss_perc:5,jitter_ms:25" -alarm_rtp_w="jitter_ms=30" sip:491234566@sip.server.xy
+
+With SIP Alarms:
+gophone loadtest  -alarm_sip="max_ring_time=5s" sip:491234566@sip.server.xy
+```
 
 ## MacOS malware detect
 
