@@ -71,6 +71,13 @@ here quick links
 
 Windows builds will be added on request!
 
+## Or use Docker
+
+```bash
+docker run --rm -it emiago/gophone
+```
+> Docker version has no Audio and Transcription built in! 
+
 ### With OPUS codec
 
 - Linux amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-opus-amd64
