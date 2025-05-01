@@ -71,6 +71,17 @@ here quick links
 
 Windows builds will be added on request!
 
+### Linux install 
+
+
+```bash 
+wget https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64
+chmod +x gophone-linux-amd64
+mv gophone-linux-amd64 /usr/local/bin/
+# There
+gophone -h
+```
+
 ## Or use Docker
 
 ```bash
