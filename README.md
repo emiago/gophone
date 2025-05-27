@@ -48,8 +48,8 @@ For audio it expected you have some preinstalled libraries.
 - [x] Controling audio formats like pcmu,pcma and opus
 - [x] N Step Loadtester integrated with SIP and media metrics
 - [ ] AttendedTransfer automation as subcommand of dial/answer
-- [ ] Recording audio for easier visiting later
-- [ ] Better events logging in Structured logging for easier JSON verification.
+- [x] Recording audio to wav for easier visiting later
+- [x] Better events logging in Structured logging for easier JSON verification.
 - [ ] Logging SIP traces to file
 - [ ] SIP over WebRTC
 
@@ -163,6 +163,9 @@ gophone dial -media=log -transcribe sip:1234@localhost:5060
 
 With DTMF:
 gophone dial -dtmf=79 -dtmf_delay=8s -dtmf_digit_delay=1s -media=speaker sip:1234@localhost:5060
+
+With Recording:
+gophone dial -record=test_record.wav sip:1234@localhost:5060
 
 With INTERACTIVE mode:
 echo "wait=3s; dtmf=123; hangup;" | gophone dial -i -media=speaker sip:demo@127.0.0.1:5060
