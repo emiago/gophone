@@ -47,9 +47,9 @@ For audio it expected you have some preinstalled libraries.
 - [x] Opus codec support
 - [x] Controling audio formats like pcmu,pcma and opus
 - [x] N Step Loadtester integrated with SIP and media metrics
-- [ ] AttendedTransfer automation as subcommand of dial/answer
-- [x] Recording audio to wav for easier visiting later
-- [x] Better events logging in Structured logging for easier JSON verification.
+- [x] AttendedTransfer automation as subcommand of dial/answer
+- [x] SRTP/DTLS support
+- [x] Recording audio for easier visiting later
 - [ ] Logging SIP traces to file
 - [ ] SIP over WebRTC
 
