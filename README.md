@@ -203,10 +203,7 @@ CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@car
 test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
 ```
 
-## Load Testing 
-
-**To ensure the continued development and maintenance of gophone, this feature is exposed only for supporters(sponsors) of this or other projects in repo. If you are interested having this feature you can contact me on** [mail](mailto:emirfreelance91@gmail.com) **and you will receive build**
-
+## Load Tester at your disposal
 
 N Step based Load Test for your SIP + RTP media server
 
