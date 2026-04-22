@@ -294,3 +294,14 @@ For allowing unsigned CLI tool to run here are some articles to check.
 - https://support.apple.com/en-us/102445#:~:text=If%20you%20want%20to%20open,Mac%20or%20compromise%20your%20privacy.
 - https://github.molgen.mpg.de/pages/bs/macOSnotes/mac/mac_procs_unsigned.html
 - https://openecoacoustics.org/resources/help-centre/software/unsigned/
+
+
+## Sponzorship
+
+If you want to keep project future development you can [sponzor it](https://github.com/sponsors/emiago) same as other projects in repo.
+In return you will also get some special features fully unblocked and be notified more about development. In this case please
+contact additionally on [mail](mailto:emirfreelance91@gmail.com) with subject GOPHONE UNBLOCK or similar, 
+and you will receive instructions/build.
+
+In future we are looking this to be more automated process.
+
