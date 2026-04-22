@@ -298,7 +298,7 @@ For allowing unsigned CLI tool to run here are some articles to check.
 If you want to keep project future development you can [sponzor it](https://github.com/sponsors/emiago) same as other projects in repo.
 In return you will also get some special features fully unblocked and prompt-free. In this case please
 contact additionally on [mail](mailto:emirfreelance91@gmail.com) with subject GOPHONE SUPPORT or similar, 
-and you will receive instructions/build.
+and you will receive further instructions/build.
 
 In future we are looking this to be more automated process.
 
