@@ -296,7 +296,7 @@ For allowing unsigned CLI tool to run here are some articles to check.
 ## Sponzorship
 
 If you want to keep project future development you can [sponzor it](https://github.com/sponsors/emiago) same as other projects in repo.
-In return you will also get some special features fully unblocked and be notified more about development. In this case please
+In return you will also get some special features fully unblocked and prompt-free. In this case please
 contact additionally on [mail](mailto:emirfreelance91@gmail.com) with subject GOPHONE UNBLOCK or similar, 
 and you will receive instructions/build.
 
