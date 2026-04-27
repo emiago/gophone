@@ -203,7 +203,9 @@ CALLTRANSCRIPTION=$(LOG_FORMAT=json gophone dial -transcribe sip:49123456789@car
 test "Please enter your PIN. Your answer is, 1234." = $CALLTRANSCRIPTION
 ```
 
-## Load Tester at your disposal
+## Advanced Features
+
+### Load Tester with Alarms
 
 N Step based Load Test for your SIP + RTP media server
 
@@ -282,6 +284,15 @@ gophone loadtest -alarm_rtp_r="pkt_loss_perc:5,jitter_ms:25" -alarm_rtp_w="jitte
 With SIP Alarms:
 gophone loadtest  -alarm_sip="max_ring_time=5s" sip:491234566@sip.server.xy
 ```
+
+### Homer Integration
+
+<img width="100px" src="https://sipcapture.org/images/logos/hero-logo.png"/> Homer intergration
+
+Imagine you can display call flow and SIP traces within your network after making call.
+Gophone can also talk to Homer and extract call legs beyond his local network.
+
+All you need to expose Homer Access with `HOMER_URL`, `HOMER_USER` and `HOMER_PASS` env.
 
 ## MacOS malware detect
 
