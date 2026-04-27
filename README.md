@@ -12,7 +12,6 @@ NOT Open Source, but most of code is on libraries mentioned with exception for s
 shows power of this libs. 
 It is mainly developed for simple automated testing purpose, but with Simple API and better integration with other shell tools.
 
-Any feature/bug or supporting/sponzoring is welcomed.
 
 ### Cross Platform builds:
 - [x] Linux amd64
@@ -304,10 +303,10 @@ For allowing unsigned CLI tool to run here are some articles to check.
 - https://openecoacoustics.org/resources/help-centre/software/unsigned/
 
 
-## Sponzorship
+## Development support
 
-If you want to keep project future development you can [sponzor it](https://github.com/sponsors/emiago) same as other projects in repo.
-In return you will also get some special features fully unblocked and prompt-free. In this case please
+If you have interest to keep project future development you can help by [sponzor it](https://github.com/sponsors/emiago) same as other projects in repo.
+In return my supporters have advanced features fully unblocked and prompt-free. In this case please
 contact additionally on [mail](mailto:emirfreelance91@gmail.com) with subject GOPHONE SUPPORT or similar, 
 and you will receive further instructions/build.
 
