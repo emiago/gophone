@@ -68,7 +68,16 @@ here quick links
 - Macos amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-amd64.tar.gz
 - Macos arm64 https://github.com/emiago/gophone/releases/latest/download/gophone-darwin-arm64.tar.gz
 
-Windows builds will be added on request!
+More static linked binaries (no libgcc, libstdc++) you can find as well. (IN TEST PHASE)
+- Linux amd64 https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64-static
+
+For background running with no audio or transcription 
+- Linux nocgo https://github.com/emiago/gophone/releases/latest/download/gophone-linux-amd64-nocgo
+
+Windows and other builds will be added on request!
+
+
+
 
 ### Linux install 
 
