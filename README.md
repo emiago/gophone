@@ -49,14 +49,23 @@ For audio it expected you have some preinstalled libraries.
 - [x] AttendedTransfer automation as subcommand of dial/answer
 - [x] SRTP/DTLS support
 - [x] Recording audio for easier visiting later
-- [ ] Logging SIP traces to file
-- [ ] SIP over WebRTC
+- [x] Remote SIP traces lookup with homer and logging SIP traces to file fur analysis
+- [x] SIP over WebRTC, CLI and GUI Browser
 
 
 
 # Quick start
 
 ## Install
+
+The easiest way to install gophone on Linux is with the install script:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/emiago/gophone/main/install.sh | sh
+```
+
+This installs gophone to `~/.local/bin` without `sudo`. The installer will show
+how to add that directory to your `PATH` if needed.
 
 gophone is single binary so you only need to download and run it.
 
@@ -319,4 +328,3 @@ as well open source. You can help by [sponzor it](https://github.com/sponsors/em
 some other help.
 In return my supporters are always informed on latest advanced features and can have this prompts removed. In this case please
 contact additionally on [mail](mailto:emirfreelance91@gmail.com).
-

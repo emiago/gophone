@@ -3,7 +3,6 @@ set -eu
 
 repo="emiago/gophone"
 binary="gophone"
-install_dir="${GOPHONE_INSTALL_DIR:-${INSTALL_DIR:-/usr/local/bin}}"
 version="${GOPHONE_VERSION:-latest}"
 
 fail() {
@@ -14,6 +13,15 @@ fail() {
 need_cmd() {
 	command -v "$1" >/dev/null 2>&1 || fail "required command not found: $1"
 }
+
+if [ -n "${GOPHONE_INSTALL_DIR:-}" ]; then
+	install_dir="$GOPHONE_INSTALL_DIR"
+elif [ -n "${INSTALL_DIR:-}" ]; then
+	install_dir="$INSTALL_DIR"
+else
+	[ -n "${HOME:-}" ] || fail "HOME is not set; set GOPHONE_INSTALL_DIR to choose an installation directory"
+	install_dir="${HOME}/.local/bin"
+fi
 
 detect_os() {
 	case "$(uname -s)" in
@@ -57,14 +65,6 @@ download() {
 	fail "curl or wget is required to download gophone"
 }
 
-run_install() {
-	if [ "$need_sudo" -eq 1 ]; then
-		sudo "$@"
-	else
-		"$@"
-	fi
-}
-
 os="$(detect_os)"
 arch="$(detect_arch)"
 asset="${binary}-${os}-${arch}"
@@ -95,24 +95,17 @@ echo "Downloading ${asset} from ${repo}..."
 download "$url" "$target"
 chmod +x "$target"
 
-need_sudo=0
-if [ -d "$install_dir" ]; then
-	if [ ! -w "$install_dir" ]; then
-		need_sudo=1
-	fi
-else
-	parent_dir="$(dirname "$install_dir")"
-	if [ ! -w "$parent_dir" ]; then
-		need_sudo=1
-	fi
-fi
-
-if [ "$need_sudo" -eq 1 ]; then
-	need_cmd sudo
-fi
-
-run_install mkdir -p "$install_dir"
-run_install install -m 0755 "$target" "${install_dir}/${binary}"
+mkdir -p "$install_dir" || fail "cannot create installation directory: $install_dir"
+[ -w "$install_dir" ] || fail "installation directory is not writable: $install_dir"
+install -m 0755 "$target" "${install_dir}/${binary}" || fail "could not install ${binary} to ${install_dir}"
 
 echo "Installed ${binary} to ${install_dir}/${binary}"
-echo "Run '${binary} -h' to get started."
+case ":${PATH:-}:" in
+	*":${install_dir}:"*)
+		echo "Run '${binary} -h' to get started."
+		;;
+	*)
+		echo "Add ${install_dir} to your PATH, then run '${binary} -h':"
+		echo "  export PATH=\"${install_dir}:\$PATH\""
+		;;
+esac
