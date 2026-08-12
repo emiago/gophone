@@ -188,6 +188,18 @@ With INTERACTIVE mode:
 echo "wait=3s; dtmf=123; hangup;" | gophone dial -i -media=speaker sip:demo@127.0.0.1:5060
 ```
 
+### WebRTC
+
+Use `gophone webrtc` to make or answer WebRTC calls, or launch the embedded browser phone. SIP signaling defaults to WebSocket, and ICE uses a public STUN server unless configured otherwise.
+
+```bash
+gophone webrtc dial -media=audio sip:echo@example.com
+gophone webrtc answer -media=audio -l 0.0.0.0:5060
+gophone webrtc browser -server wss://sip.example.com
+```
+
+Run `gophone webrtc dial -h`, `answer -h`, or `browser -h` for ICE and connection options.
+
 
 ## Output example
 
