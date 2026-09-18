@@ -28,8 +28,11 @@ detect_os() {
 		Linux)
 			echo "linux"
 			;;
+		Darwin)
+			echo "darwin"
+			;;
 		*)
-			fail "unsupported OS: $(uname -s). Only Linux is supported by this installer for now."
+			fail "unsupported OS: $(uname -s). Supported operating systems: Linux, macOS."
 			;;
 	esac
 }
@@ -69,6 +72,10 @@ os="$(detect_os)"
 arch="$(detect_arch)"
 asset="${binary}-${os}-${arch}"
 
+if [ "$os" = "darwin" ]; then
+	asset="${asset}.tar.gz"
+fi
+
 case "$version" in
 	latest)
 		url="https://github.com/${repo}/releases/latest/download/${asset}"
@@ -90,14 +97,42 @@ tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT INT TERM
 
 target="${tmp_dir}/${binary}"
+library=
 
 echo "Downloading ${asset} from ${repo}..."
-download "$url" "$target"
+if [ "$os" = "darwin" ]; then
+	need_cmd tar
+	archive="${tmp_dir}/${asset}"
+	download "$url" "$archive"
+	tar -xzf "$archive" -C "$tmp_dir"
+	target="${tmp_dir}/gophone/${binary}"
+	library="${tmp_dir}/gophone/libwhisper.so"
+	[ -f "$target" ] || fail "release archive does not contain ${binary}"
+	[ -f "$library" ] || fail "release archive does not contain libwhisper.so"
+else
+	download "$url" "$target"
+fi
+
 chmod +x "$target"
 
 mkdir -p "$install_dir" || fail "cannot create installation directory: $install_dir"
 [ -w "$install_dir" ] || fail "installation directory is not writable: $install_dir"
 install -m 0755 "$target" "${install_dir}/${binary}" || fail "could not install ${binary} to ${install_dir}"
+
+if [ "$os" = "darwin" ]; then
+	lib_dir="${GOPHONE_LIB_DIR:-/usr/local/lib}"
+	mkdir -p "$lib_dir" 2>/dev/null || {
+		need_cmd sudo
+		sudo mkdir -p "$lib_dir"
+	}
+	if [ -w "$lib_dir" ]; then
+		install -m 0755 "$library" "${lib_dir}/libwhisper.so"
+	else
+		need_cmd sudo
+		sudo install -m 0755 "$library" "${lib_dir}/libwhisper.so"
+	fi
+	echo "Installed libwhisper.so to ${lib_dir}/libwhisper.so"
+fi
 
 echo "Installed ${binary} to ${install_dir}/${binary}"
 case ":${PATH:-}:" in
